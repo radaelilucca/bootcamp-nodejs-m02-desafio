@@ -22,6 +22,9 @@ class CreateTransactionService {
         throw new Error('Insufficient funds');
       }
     }
+    if (!['income', 'outcome'].includes(type)) {
+      throw new Error('Invalid Transaction type.');
+    }
     const transaction = this.transactionsRepository.create({
       title,
       value,
